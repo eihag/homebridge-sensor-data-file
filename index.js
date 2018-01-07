@@ -32,6 +32,7 @@ SensorDataFileAccessory.prototype.getServices = function () {
 
    var tempService = new Service.TemperatureSensor(this.name);
    tempService.getCharacteristic(Characteristic.CurrentTemperature)
+      .setProps({minValue: -100, maxValue: 150})
       .on('get', this.getTemperature.bind(this));
 
    tempService.getCharacteristic(Characteristic.StatusLowBattery)
